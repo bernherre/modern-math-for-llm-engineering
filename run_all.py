@@ -19,4 +19,4 @@ for rel in EXAMPLES:
     print("=" * 80)
     subprocess.run([sys.executable, str(ROOT / rel)], check=True)
 
-print("\nAll v0.1.1 labs completed successfully.")
+print("\nAll lightweight NumPy labs completed successfully.")

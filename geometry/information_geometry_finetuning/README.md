@@ -43,6 +43,29 @@ A frozen feature matrix is intentionally badly conditioned. Only a two-parameter
 python example.py
 ```
 
+## Real sentence-embedding experiment
+
+The real-sentence version freezes the encoder and tunes only a tiny evidence-quality logistic head, comparing ordinary gradient descent with a Fisher-preconditioned natural-gradient update under the same number of steps.
+
+The encoder is **frozen**. The purpose is to move from hand-written/random arrays to actual language representations without introducing model training as a confounder.
+
+Install the optional dependency once from the repository root:
+
+```bash
+python -m pip install -e ".[hf]"
+```
+
+Run:
+
+```bash
+python geometry/information_geometry_finetuning/example_hf.py
+```
+
+Embedding reference:
+
+- **Sentence-BERT: Sentence Embeddings using Siamese BERT-Networks** - Reimers & Gurevych, EMNLP-IJCNLP 2019. https://aclanthology.org/D19-1410/
+- `sentence-transformers/all-MiniLM-L6-v2` model card: https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2
+
 ## Metrics
 
 - initial/final binary cross-entropy

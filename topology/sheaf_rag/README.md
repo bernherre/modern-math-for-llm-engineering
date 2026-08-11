@@ -53,6 +53,29 @@ The baseline takes top-3 relevance. The structured selector exhaustively searche
 python example.py
 ```
 
+## Real sentence-embedding experiment
+
+The real-sentence version retrieves short, mutually compatible and contradictory product statements. Relevance and local states come from frozen sentence embeddings; the structured selector penalizes local-to-global disagreement.
+
+The encoder is **frozen**. The purpose is to move from hand-written/random arrays to actual language representations without introducing model training as a confounder.
+
+Install the optional dependency once from the repository root:
+
+```bash
+python -m pip install -e ".[hf]"
+```
+
+Run:
+
+```bash
+python topology/sheaf_rag/example_hf.py
+```
+
+Embedding reference:
+
+- **Sentence-BERT: Sentence Embeddings using Siamese BERT-Networks** - Reimers & Gurevych, EMNLP-IJCNLP 2019. https://aclanthology.org/D19-1410/
+- `sentence-transformers/all-MiniLM-L6-v2` model card: https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2
+
 ## Metrics
 
 - sum of retrieval relevance

@@ -25,3 +25,7 @@ Label results conceptually as:
 4. **extension** - tests a new hypothesis beyond the cited paper.
 
 Do not present a mechanism demo as evidence of production improvement.
+
+## Real-sentence companion
+
+If a lab acts on embeddings, retrieval representations, hidden states, or text-level similarity, include an `example_hf.py` companion whenever practical. It should use frozen sentence/token embeddings from short real phrases and test the same mathematical intervention as the minimal NumPy example. Keep Hugging Face dependencies optional and cite the embedding model/paper in the lab README.

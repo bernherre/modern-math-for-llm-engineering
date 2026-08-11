@@ -51,6 +51,29 @@ Two rank-1 adapters are applied to frozen hidden states. The target behavior is 
 python example.py
 ```
 
+## Real sentence-embedding experiment
+
+The real-sentence version derives two rank-1 adapter-like operators from frozen semantic shifts (concise phrasing and cautious phrasing), then measures their commutator and order-sensitive outputs.
+
+The encoder is **frozen**. The purpose is to move from hand-written/random arrays to actual language representations without introducing model training as a confounder.
+
+Install the optional dependency once from the repository root:
+
+```bash
+python -m pip install -e ".[hf]"
+```
+
+Run:
+
+```bash
+python algebra/noncommutative_adapter_composition/example_hf.py
+```
+
+Embedding reference:
+
+- **Sentence-BERT: Sentence Embeddings using Siamese BERT-Networks** - Reimers & Gurevych, EMNLP-IJCNLP 2019. https://aclanthology.org/D19-1410/
+- `sentence-transformers/all-MiniLM-L6-v2` model card: https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2
+
 ## Metrics
 
 - MSE against the target composed behavior

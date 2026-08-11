@@ -52,6 +52,29 @@ No embedding is updated.
 python example.py
 ```
 
+## Real sentence-embedding experiment
+
+The real-sentence version embeds a quantization/RAG query and five short passages, then compares cosine retrieval with the same task-conditioned low-rank metric used by the lab.
+
+The encoder is **frozen**. The purpose is to move from hand-written/random arrays to actual language representations without introducing model training as a confounder.
+
+Install the optional dependency once from the repository root:
+
+```bash
+python -m pip install -e ".[hf]"
+```
+
+Run:
+
+```bash
+python geometry/metric_rag/example_hf.py
+```
+
+Embedding reference:
+
+- **Sentence-BERT: Sentence Embeddings using Siamese BERT-Networks** - Reimers & Gurevych, EMNLP-IJCNLP 2019. https://aclanthology.org/D19-1410/
+- `sentence-transformers/all-MiniLM-L6-v2` model card: https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2
+
 ## Metrics
 
 - Recall@3

@@ -20,13 +20,14 @@ The repository grows by **AI process**, while keeping mathematical families visi
 
 ## v0.2 - Frozen real embeddings
 
-Replace synthetic embeddings with frozen public encoders while keeping exactly the same experiments and metrics.
+Replace synthetic embeddings with frozen public encoders while keeping the same mathematical intervention and baseline visible.
 
-Targets:
-
-- sentence-transformer style frozen embeddings for retrieval labs
-- hidden states from a small open transformer for tuning diagnostics
-- real LoRA deltas for composition experiments
+- [x] add `example_hf.py` to every current lab using one frozen SentenceTransformer model
+- [x] use short real phrases for retrieval, consistency, tuning-head, composition, OT and quantization experiments
+- [x] keep Hugging Face dependencies optional so the NumPy mechanism tests remain lightweight
+- [ ] add hidden states from a small open transformer for tuning diagnostics
+- [ ] replace adapter-like semantic operators with real LoRA deltas for composition experiments
+- [ ] run the real-sentence suite in a network-enabled CI/cache job
 
 ## v0.3 - End-to-end small LLM tests
 

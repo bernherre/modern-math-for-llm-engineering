@@ -3,12 +3,17 @@ requires = ["setuptools>=68"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "modern-math-for-llm"
-version = "0.1.1"
+name = "modern-math-for-llm-engineering"
+version = "0.2.0"
 description = "Reproducible experiments applying modern mathematics to practical LLM and AI processes."
 requires-python = ">=3.10"
 dependencies = [
     "numpy>=1.24",
+]
+
+[project.optional-dependencies]
+hf = [
+    "sentence-transformers>=3.0",
 ]
 
 [tool.setuptools]

@@ -25,6 +25,33 @@ AI process
 
 Whenever possible, the underlying model or embeddings remain frozen. This isolates the effect of the mathematical intervention and makes compute cost part of the comparison.
 
+## Two experiment levels
+
+Each current lab has two executable layers:
+
+```text
+example.py     -> minimal deterministic mechanism using only NumPy
+example_hf.py  -> the same idea over frozen embeddings from simple real sentences
+```
+
+The Hugging Face companion examples use `sentence-transformers/all-MiniLM-L6-v2` so one downloaded model can be reused across the repository. The encoder remains frozen; the experiment changes only the mathematical intervention around the representation.
+
+Install the optional embedding stack:
+
+```bash
+python -m pip install -e ".[hf]"
+```
+
+Run all real-sentence experiments:
+
+```bash
+python run_hf.py
+```
+
+The default CI runs the lightweight NumPy labs and syntax-checks the HF companions; it does not download model weights on every commit.
+
+The model maps sentences and paragraphs to a 384-dimensional dense space; see its Hugging Face model card and the Sentence-BERT paper referenced in each lab README.
+
 ## Current labs
 
 ### Geometry
@@ -77,6 +104,7 @@ At minimum:
 <lab>/
   README.md
   example.py
+  example_hf.py   # when the mechanism operates on embeddings/text representations
 ```
 
 The lab README must document:
@@ -90,6 +118,7 @@ The lab README must document:
 7. Metrics.
 8. Observed result.
 9. Limitations and next experiment.
+10. Real-sentence companion experiment when applicable.
 
 Papers are part of the experiment, not decorative references. Each lab should make clear what comes from prior work, what is reproduced, and what is an extension proposed in this repository.
 

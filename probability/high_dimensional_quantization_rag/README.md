@@ -80,6 +80,29 @@ python probability/high_dimensional_quantization_rag/turbovec_smoke.py
 
 The optional script is not part of `run_all.py`, because TurboVec ships compiled Rust/Python bindings and is intentionally not a mandatory dependency of the repository.
 
+## Real sentence-embedding experiment
+
+The real-sentence version builds a small multi-topic corpus, embeds every sentence once, and compares float32 retrieval, naive 2-bit scalar quantization, and random-rotation 2-bit quantization.
+
+The encoder is **frozen**. The purpose is to move from hand-written/random arrays to actual language representations without introducing model training as a confounder.
+
+Install the optional dependency once from the repository root:
+
+```bash
+python -m pip install -e ".[hf]"
+```
+
+Run:
+
+```bash
+python probability/high_dimensional_quantization_rag/example_hf.py
+```
+
+Embedding reference:
+
+- **Sentence-BERT: Sentence Embeddings using Siamese BERT-Networks** - Reimers & Gurevych, EMNLP-IJCNLP 2019. https://aclanthology.org/D19-1410/
+- `sentence-transformers/all-MiniLM-L6-v2` model card: https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2
+
 ## Metrics
 
 - Recall@1 / Recall@5 / Recall@10 against known topic labels

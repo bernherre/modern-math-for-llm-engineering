@@ -29,3 +29,20 @@ Say what the result supports and what it does not support.
 
 ## Next experiment
 Define the smallest step toward a real LLM/RAG benchmark.
+
+## Real sentence-embedding companion
+
+When the mechanism acts on text embeddings or latent representations, add:
+
+```text
+example_hf.py
+```
+
+Requirements:
+
+- use a frozen public encoder (default: `sentence-transformers/all-MiniLM-L6-v2`);
+- use short, inspectable phrases rather than random arrays;
+- preserve the same baseline/intervention comparison as `example.py`;
+- do not silently introduce model fine-tuning;
+- document the embedding model/paper in the README;
+- keep the heavy dependency optional via `python -m pip install -e ".[hf]"`.

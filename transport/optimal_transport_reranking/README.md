@@ -42,6 +42,29 @@ The query and each document contain two frozen token embeddings. A decoy documen
 python example.py
 ```
 
+## Real sentence-embedding experiment
+
+The real-sentence version uses contextual token embeddings from the same frozen encoder. Mean-token cosine is the baseline; Sinkhorn optimal transport reranks the same candidate passages.
+
+The encoder is **frozen**. The purpose is to move from hand-written/random arrays to actual language representations without introducing model training as a confounder.
+
+Install the optional dependency once from the repository root:
+
+```bash
+python -m pip install -e ".[hf]"
+```
+
+Run:
+
+```bash
+python transport/optimal_transport_reranking/example_hf.py
+```
+
+Embedding reference:
+
+- **Sentence-BERT: Sentence Embeddings using Siamese BERT-Networks** - Reimers & Gurevych, EMNLP-IJCNLP 2019. https://aclanthology.org/D19-1410/
+- `sentence-transformers/all-MiniLM-L6-v2` model card: https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2
+
 ## Metrics
 
 - cosine ranking over mean embeddings
