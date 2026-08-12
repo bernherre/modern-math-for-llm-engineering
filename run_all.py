@@ -11,6 +11,8 @@ EXAMPLES = [
     "algebra/noncommutative_adapter_composition/example.py",
     "transport/optimal_transport_reranking/example.py",
     "probability/high_dimensional_quantization_rag/example.py",
+    "retrieval/neighborhood_rerank_optimizer/example.py",
+    "combinatorics/matroid_selection/example.py",
 ]
 
 for rel in EXAMPLES:

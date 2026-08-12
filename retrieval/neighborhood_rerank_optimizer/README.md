@@ -134,6 +134,6 @@ Use a public retrieval benchmark and a real cross-encoder or LLM reranker. Compa
 3. AcuRank-style adaptive compute;
 4. score-gap-only gating;
 5. neighborhood geometry gating;
-6. geometry gating plus diverse candidate representatives.
+6. geometry gating plus [matroid-constrained candidate selection](../../combinatorics/matroid_selection/) so the rerank budget is spent on structurally independent evidence.
 
 The most important target is not a higher standalone reranker score. It is the same or better end-to-end RAG quality with materially less second-stage compute.

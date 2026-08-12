@@ -13,6 +13,8 @@ EXAMPLES = [
     "algebra/noncommutative_adapter_composition/example_hf.py",
     "transport/optimal_transport_reranking/example_hf.py",
     "probability/high_dimensional_quantization_rag/example_hf.py",
+    "retrieval/neighborhood_rerank_optimizer/example_hf.py",
+    "combinatorics/matroid_selection/example_hf.py",
 ]
 
 for rel in EXAMPLES:

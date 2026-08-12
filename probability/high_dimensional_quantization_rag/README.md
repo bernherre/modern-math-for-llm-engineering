@@ -71,14 +71,35 @@ Run:
 python probability/high_dimensional_quantization_rag/example.py
 ```
 
-There is also an optional smoke test against the actual public TurboVec package:
+There is also an optional integration suite against the actual public TurboVec package:
 
 ```bash
 pip install turbovec
 python probability/high_dimensional_quantization_rag/turbovec_smoke.py
 ```
 
-The optional script is not part of `run_all.py`, because TurboVec ships compiled Rust/Python bindings and is intentionally not a mandatory dependency of the repository.
+The smoke test now covers `IdMapIndex`, stable external ids, in-kernel allowlists, write/load persistence, removal and incremental `sync()` when the installed version exposes it.
+
+The lab also contains four focused TurboVec experiments:
+
+```bash
+# 2-bit / 4-bit ANN quality, build/search time and serialized size
+python probability/high_dimensional_quantization_rag/benchmark_turbovec.py
+
+# optional TQ+ calibration path when supported
+python probability/high_dimensional_quantization_rag/benchmark_turbovec.py --calibrate
+
+# selective tenant/metadata filtering: post-filter vs in-kernel allowlist
+python probability/high_dimensional_quantization_rag/filtered_rag.py
+
+# continuous corpus growth and incremental persistence
+python probability/high_dimensional_quantization_rag/online_ingest.py
+
+# aggressive 2-bit candidate generation followed by exact float32 reranking
+python probability/high_dimensional_quantization_rag/exact_rerank.py
+```
+
+These scripts are intentionally not part of `run_all.py`, because TurboVec ships compiled Rust/Python bindings and is not a mandatory dependency of the repository. They are integration/benchmark experiments, whereas `example.py` remains the dependency-light mathematical mechanism test.
 
 ## Real sentence-embedding experiment
 
@@ -108,7 +129,8 @@ Embedding reference:
 - Recall@1 / Recall@5 / Recall@10 against known topic labels
 - reconstruction MSE
 - theoretical vector payload at `float32` versus packed 2-bit codes plus one stored norm
-- later: index build/training time, query latency, RSS, nDCG, RAG answer quality and incremental-ingest cost
+- TurboVec integration: ANN Recall@k, top-1 agreement, build time, search latency, serialized size, filtered-result coverage, incremental-ingest latency and exact-rerank recovery
+- later: RSS, nDCG and final RAG answer quality on a public corpus
 
 ## Observed result
 
@@ -141,4 +163,4 @@ Use one frozen public embedding model and one public retrieval dataset, then com
 4. TurboVec 2-bit and 4-bit;
 5. optionally EDEN-style quantization where a suitable ANN implementation is available.
 
-Record Recall@k, nDCG, index-training/build time, online insertion cost, wall-clock query latency, RSS and final RAG answer accuracy. The purpose is specifically to test whether the **mathematical data-obliviousness** provides a practical advantage in changing RAG corpora.
+Record Recall@k, nDCG, index-training/build time, online insertion cost, wall-clock query latency, RSS and final RAG answer accuracy. The optional scripts in this folder now cover the mechanical TurboVec pieces (ANN quality, filtered search, ingest/persistence, and low-bit candidate generation plus exact reranking); the next step is to move those measurements to a public text-retrieval corpus. The purpose is specifically to test whether the **mathematical data-obliviousness** provides a practical advantage in changing RAG corpora.

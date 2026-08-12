@@ -63,6 +63,10 @@ The model maps sentences and paragraphs to a 384-dimensional dense space; see it
 
 - [Sheaf RAG](topology/sheaf_rag/) - Use local-to-global consistency to select a less contradictory RAG context.
 
+### Retrieval Optimization
+
+- [Neighborhood Rerank Optimizer](retrieval/neighborhood_rerank_optimizer/) - Use local candidate geometry to allocate token-level reranking compute only where the neighborhood is ambiguous.
+
 ### Algebra
 
 - [Lie Algebra Fine-Tuning](algebra/lie_algebra_finetuning/) - Constrain parameter-efficient updates to a structured Lie-algebra family.
@@ -72,9 +76,13 @@ The model maps sentences and paragraphs to a 384-dimensional dense space; see it
 
 - [Optimal Transport Reranking](transport/optimal_transport_reranking/) - Rerank retrieval candidates using token-level distributions instead of only pooled vectors.
 
+### Combinatorial Optimization
+
+- [Matroid Selection](combinatorics/matroid_selection/) - Use explicit independence constraints to choose non-redundant RAG context and balanced LLM training subsets under a fixed budget.
+
 ### High-Dimensional Probability
 
-- [High-Dimensional Quantization for RAG](probability/high_dimensional_quantization_rag/) - Test random rotations and data-oblivious low-bit quantization for frozen embedding indexes, inspired by TurboQuant-style methods.
+- [High-Dimensional Quantization for RAG](probability/high_dimensional_quantization_rag/) - Test random rotations and data-oblivious low-bit quantization for frozen embedding indexes, plus optional TurboVec benchmarks for filtered search, online ingest and exact reranking.
 
 ## Run the labs
 
@@ -138,6 +146,8 @@ Planned directions include:
 
 - subspace and Grassmann-style retrieval for RAG;
 - spectral context selection;
+- matroid-constrained context and training-data selection;
+- neighborhood-adaptive reranking and compute allocation;
 - persistent-homology diagnostics for representation collapse and fine-tuning;
 - geometry-aware adapter routing;
 - optimal-transport alignment for retrieval and domain adaptation;
