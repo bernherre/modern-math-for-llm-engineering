@@ -1,0 +1,7 @@
+cff-version: 1.2.0
+message: "If you use this repository, please cite the repository and the primary papers listed in each lab README."
+title: "Modern Mathematics for LLM Engineering"
+version: 0.2.2
+date-released: 2026-08-12
+license: MIT
+type: software
