@@ -46,3 +46,21 @@ Requirements:
 - do not silently introduce model fine-tuning;
 - document the embedding model/paper in the README;
 - keep the heavy dependency optional via `python -m pip install -e ".[hf]"`.
+
+
+## Portable implementation path
+
+Only add this section after profiling shows a real bottleneck.
+
+Document:
+
+- the bottleneck observed in the Python/HF experiment;
+- the portable Rust implementation, when added;
+- the wgpu/WGSL GPU implementation, when added;
+- any specialized CUDA/Triton, Metal or Vulkan fast path;
+- numerical tolerance against the reference implementation;
+- AI metric before/after optimization;
+- latency, memory, throughput and other relevant systems metrics;
+- supported desktop/mobile platforms and fallback behavior.
+
+Do not add a backend only to demonstrate the technology. The backend must improve a measured AI/LLM engineering process.

@@ -29,3 +29,14 @@ Do not present a mechanism demo as evidence of production improvement.
 ## Real-sentence companion
 
 If a lab acts on embeddings, retrieval representations, hidden states, or text-level similarity, include an `example_hf.py` companion whenever practical. It should use frozen sentence/token embeddings from short real phrases and test the same mathematical intervention as the minimal NumPy example. Keep Hugging Face dependencies optional and cite the embedding model/paper in the lab README.
+
+
+## Systems and portability contributions
+
+The preferred progression for an experiment that needs optimization is:
+
+```text
+Python reference -> Rust CPU -> wgpu/WGSL -> optional specialized backend
+```
+
+Do not make the mathematical algorithm depend on CUDA, Metal, Vulkan or another vendor-specific API. Specialized implementations must be checked against the reference path and must document both AI-level quality and systems-level performance. See `ARCHITECTURE.md`.

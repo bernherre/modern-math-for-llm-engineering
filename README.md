@@ -130,6 +130,23 @@ The lab README must document:
 
 Papers are part of the experiment, not decorative references. Each lab should make clear what comes from prior work, what is reproduced, and what is an extension proposed in this repository.
 
+## Implementation architecture
+
+The repository uses a portability ladder for successful experiments:
+
+```text
+mathematical idea
+  -> Python reference
+  -> frozen real-model experiment
+  -> portable Rust core
+  -> wgpu / WGSL
+  -> specialized backend only when benchmarks justify it
+```
+
+Python remains the source-of-truth experiment layer. Rust is the preferred portable systems layer, and `wgpu`/WGSL is the preferred portable GPU path for desktop and mobile. CUDA/Triton, Metal or Vulkan-specific implementations are optional fast paths, not requirements.
+
+See [ARCHITECTURE.md](ARCHITECTURE.md) for platform targets, backend rules and benchmark requirements.
+
 ## Design principles
 
 - **AI process first.** No standalone demonstrations of mathematical definitions.
@@ -139,6 +156,8 @@ Papers are part of the experiment, not decorative references. Each lab should ma
 - **Measure compute too.** Quality without memory, latency, parameter count, or training-cost context is incomplete.
 - **Small before large.** Validate the mechanism with a deterministic experiment before scaling it.
 - **Do not confuse a toy result with production evidence.** A runnable mechanism is the start of an experiment, not the conclusion.
+- **Portable before vendor-specific.** When a mechanism proves useful, prefer Rust plus a portable GPU path before adding specialized kernels.
+- **Optimize only measured bottlenecks.** Lower-level implementations must preserve the AI metric while improving latency, memory, throughput, energy, or update cost.
 
 ## Research directions
 
@@ -156,7 +175,7 @@ Planned directions include:
 - constrained and Hamiltonian dynamics for stable adaptation;
 - topology plus geometry for context selection and consistency.
 
-See [ROADMAP.md](ROADMAP.md) for the evolving experiment plan.
+See [ROADMAP.md](ROADMAP.md) for the evolving experiment plan and [ARCHITECTURE.md](ARCHITECTURE.md) for the path from research Python to portable desktop/mobile implementations.
 
 ## Contributing
 

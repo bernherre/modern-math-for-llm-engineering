@@ -51,6 +51,18 @@ Replace synthetic embeddings with frozen public encoders while keeping the same 
 - [ ] compare against MMR / DF-RAG on a public retrieval benchmark
 - [ ] add a real LoRA fine-tuning experiment with partition-matroid minibatch selection
 
+
+
+## v0.2.3 - Portable implementation architecture
+
+- [x] define Python -> Rust -> wgpu/WGSL as the preferred implementation ladder
+- [x] define CPU fallback and portable GPU paths for desktop and mobile
+- [x] keep CUDA/Triton, Metal and Vulkan-specific kernels as optional measured fast paths
+- [x] require AI-quality metrics and systems metrics for optimized implementations
+- [ ] port the first proven retrieval bottleneck to a portable Rust core
+- [ ] add the first wgpu/WGSL compute implementation
+- [ ] compare portable GPU performance with a specialized backend on the same lab
+
 ## v0.3 - End-to-end small LLM tests
 
 Compare interventions on compact open models under fixed compute budgets.
